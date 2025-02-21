@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Bibek Bhattarai - Portfolio{% endblock %}</title>
-   {% tailwind_css %}
+    {% tailwind_css %}
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
@@ -21,7 +21,8 @@
     <nav class="bg-gray-100 dark:bg-gray-800 shadow-lg fixed w-full z-10 transition-colors duration-300">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center py-4">
-                <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Bibek .</a>
+                <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Bibek
+                    Bhattarai</a>
 
                 <div class="flex space-x-6 items-center">
                     <a href="{% url 'home' %}"
@@ -50,17 +51,14 @@
     <!-- Main Content -->
     <main class="pt-20 max-w-6xl mx-auto px-4 transition-colors duration-300">
         {% block content %}
-        <!-- Example content block -->
-        <section class="py-8">
-            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Welcome to My Portfolio</h1>
-            <p class="mt-4 text-gray-700 dark:text-gray-300">This is an example of the main content area.</p>
-        </section>
+        <!-- Content will be overridden by child templates -->
         {% endblock %}
     </main>
     <!-- Dark Mode Toggle Script -->
-    
+   
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
-    
+
     <!-- AOS for Scroll Animations -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
@@ -71,6 +69,7 @@
             });
         });
     </script>
-    <script src="{% static 'js/theme.js' %}"></script>
+    <script type="module" src="{% static 'js/theme.js' %}"></script>
+    <script type="module" src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

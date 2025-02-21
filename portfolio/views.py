@@ -14,13 +14,21 @@ def about(request):
 
 def contact(request):
     if request.method == 'POST':
-        name = request.POST['name']
-        email = request.POST['email']
-        message = request.POST['message']
+        first_name = request.POST.get('firstName')
+        last_name = request.POST.get('lastName')
+        email = request.POST.get('email')
+        phone = request.POST.get('phone')
+        message = request.POST.get('message')
+
+        # Construct the full name
+        name = f"{first_name} {last_name}"
+
+        # Construct the email message to include phone number
+        full_message = f"Name: {name}\nEmail: {email}\nPhone: {phone}\n\nMessage:\n{message}"
 
         send_mail(
             f"Message from {name}",
-            message,
+            full_message,
             email,
             [settings.EMAIL_HOST_USER],  
             fail_silently=False,
@@ -30,19 +38,14 @@ def contact(request):
     
     return render(request, 'portfolio/contact.html')
 
-
-
 def projects(request):
     return render(request, 'portfolio/projects.html')
 
 def projects(request):
     return render(request, 'portfolio/projects.html')
-
-
 
 def skills(request):
     return render(request, 'portfolio/skills.html')
-
 
 def blog_list(request):
     articles = Article.objects.all().order_by('-date_published')
