@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Projects - Bibek Bhattarai{% endblock %}
+
+{% block content %}
+<div class="max-w-6xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
+    <h1 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mb-8">My Projects</h1>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Hamro Pasal Project -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Hamro Pasal</h2>
+            <a href="https://ecommerce-front-nine-mu.vercel.app/" target="_blank">
+                <img src="{% static 'images/hamro-pasal.png' %}" alt="Hamro Pasal"
+                    class="w-full h-auto mb-4 rounded-lg">
+            </a>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">A simple e-commerce web application built with Next.js, Tailwind CSS, MongoDB,
+                AWS, Google Console, and Stripe.</p>
+            <a href="https://github.com/bibek1414/ecommerce-frontend-backend" target="_blank"
+                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
+        </div>
+
+        <!-- Todo Project -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Todo Project</h2>
+            <a href="https://todo-90zm.onrender.com" target="_blank">
+                <img src="{% static 'images/todoprojectmage.png' %}" alt="Todo Project"
+                     class="w-full h-auto mb-4 rounded-lg">
+            </a>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">A task management application built with Django. It includes functionalities
+                like adding, editing, and deleting tasks.</p>
+            <a href="https://github.com/bibek1414/todo-django" target="_blank"
+                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
+        </div>
+
+        <!-- Tweeter Bar Project -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Tweeter Bar</h2>
+            <a href="https://tweet-django-xxrw.onrender.com" target="_blank">
+                <img src="{% static 'images/tweeter-bar.png' %}" alt="Tweeter Bar"
+                    class="w-full h-auto mb-4 rounded-lg">
+            </a>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">A social media app where users can register, log in, log out, post tweets, and edit their posts. Built with Django and offers a full set of user management features.</p>
+            <a href="https://github.com/bibek1414/tweet-django" target="_blank"
+                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
+        </div>
+
+        <!-- Quiz Project -->
+        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
+            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Quiz Application</h2>
+            <a href="https://quiz-django.onrender.com/" target="_blank">
+                <img src="{% static 'images/quiz-app.png' %}" alt="Quiz Application"
+                    class="w-full h-auto mb-4 rounded-lg">
+            </a>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">A quiz application built with Django, Tailwind CSS, and JavaScript. It allows users to take quizzes and view their results.</p>
+            <a href="https://github.com/bibek1414/quiz_django" target="_blank"
+                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials Section -->
+<div class="bg-gray-100 dark:bg-gray-800 py-16 mt-12 transition-colors duration-300">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mb-12">What People Say</h2>
+
+        <div class="bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6 text-center">
+            <p class="text-gray-700 dark:text-gray-300 italic text-lg">🚀 "Coming Soon: Testimonials from mentors, colleagues, and
+                clients."</p>
+        </div>
+    </div>
+</div>
+
+<div class="max-w-6xl mx-auto px-4 py-12 text-center bg-white dark:bg-gray-900 transition-colors duration-300">
+    <h2 class="text-3xl font-bold text-blue-600 dark:text-blue-400 mb-6">Download My CV</h2>
+    <p class="text-gray-700 dark:text-gray-300 mb-4">Want to know more about my experience and skills? Download my CV below.</p>
+    <a href="{% static 'files/cv.pdf' %}" download
+        class="bg-blue-600 dark:bg-blue-700 text-white px-6 py-3 rounded-lg shadow-lg font-semibold hover:bg-blue-700 dark:hover:bg-blue-800 transition">
+        📄 Download CV (PDF)
+    </a>
+</div>
+
+{% endblock %}

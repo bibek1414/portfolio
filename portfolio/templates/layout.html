@@ -1,0 +1,76 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Bibek Bhattarai - Portfolio{% endblock %}</title>
+   {% tailwind_css %}
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <!-- AOS for Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans transition-colors duration-300">
+
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-100 dark:bg-gray-800 shadow-lg fixed w-full z-10 transition-colors duration-300">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Bibek .</a>
+
+                <div class="flex space-x-6 items-center">
+                    <a href="{% url 'home' %}"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
+                    <a href="{% url 'about' %}"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">About</a>
+                    <a href="{% url 'contact' %}"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                    <a href="{% url 'projects' %}"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
+                    <a href="{% url 'skills' %}"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a>
+                    <a href="{% url 'blog_list' %}"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle"
+                        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
+                        <i id="theme-icon" class="fas fa-moon text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-20 max-w-6xl mx-auto px-4 transition-colors duration-300">
+        {% block content %}
+        <!-- Example content block -->
+        <section class="py-8">
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Welcome to My Portfolio</h1>
+            <p class="mt-4 text-gray-700 dark:text-gray-300">This is an example of the main content area.</p>
+        </section>
+        {% endblock %}
+    </main>
+    <!-- Dark Mode Toggle Script -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
+    
+    <!-- AOS for Scroll Animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        window.addEventListener('load', () => {
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+        });
+    </script>
+    <script src="{% static 'js/theme.js' %}"></script>
+</body>
+</html>
