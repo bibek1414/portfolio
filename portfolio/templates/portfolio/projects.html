@@ -5,7 +5,6 @@
 
 {% block content %}
 <div class="max-w-6xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
-    <h1 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mb-8">My Projects</h1>
 
     <!-- Project Showcase Container -->
     <div class="flex flex-col md:flex-row gap-8">
@@ -30,11 +29,13 @@
             <hr class="border-gray-300 dark:border-gray-600 mb-6">
             <!-- Live Server and GitHub Logos -->
             <div class="flex gap-4">
-                <a id="project-live-link" href="https://ecommerce-front-nine-mu.vercel.app/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">
+                <a id="project-live-link" href="https://ecommerce-front-nine-mu.vercel.app/" target="_blank" class="group text-blue-500 dark:text-blue-400 hover:underline relative">
                     <i class="fas fa-external-link-alt text-3xl"></i>
+                    <span class="absolute left-0 bottom-full mb-2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity">Live Server</span>
                 </a>
-                <a id="project-github-link" href="https://github.com/bibek1414/ecommerce-frontend-backend" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">
+                <a id="project-github-link" href="https://github.com/bibek1414/ecommerce-frontend-backend" target="_blank" class="group text-blue-500 dark:text-blue-400 hover:underline relative">
                     <i class="fab fa-github text-3xl"></i>
+                    <span class="absolute left-0 bottom-full mb-2 px-2 py-1 text-xs bg-black text-white rounded opacity-0 group-hover:opacity-100 transition-opacity">GitHub</span>
                 </a>
             </div>
         </div>
@@ -55,7 +56,8 @@
             </div>
         </div>
     </div>
-</div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
 
 <!-- JavaScript for Project Navigation -->
 <script>
@@ -63,7 +65,7 @@
         {
             title: "Hamro Pasal",
             description: "A simple e-commerce web application built with Next.js, Tailwind CSS, MongoDB, AWS, Google Console, and Stripe.",
-            technologies: "HTML, CSS, Tailwind, JavaScript",
+            technologies: "HTML, CSS, Tailwind, JavaScript , Nextjs, MongoDB, AWS, Google Console, Stripe",
             liveLink: "https://ecommerce-front-nine-mu.vercel.app/",
             githubLink: "https://github.com/bibek1414/ecommerce-frontend-backend",
             image: "{% static 'images/hamro-pasal.png' %}"
@@ -71,7 +73,7 @@
         {
             title: "Todo Project",
             description: "A task management application built with Django. It includes functionalities like adding, editing, and deleting tasks.",
-            technologies: "Django, HTML, CSS, JavaScript",
+            technologies: "Django, HTML, CSS, JavaScript ",
             liveLink: "https://todo-90zm.onrender.com",
             githubLink: "https://github.com/bibek1414/todo-django",
             image: "{% static 'images/todo.png' %}"
@@ -90,12 +92,23 @@
             technologies: "Django, Tailwind CSS, JavaScript",
             liveLink: "https://quiz-django.onrender.com/",
             githubLink: "https://github.com/bibek1414/quiz_django",
-            image: "{% static 'images/quiz-app.png' %}"
+            image: "{% static 'images/image.png' %}"
         }
     ];
 
     let currentProjectIndex = 0;
 
+    // Function to animate the transition between projects
+    function animateProjectTransition() {
+        // Fade out the current project content
+        gsap.to(["#project-title", "#project-description", "#project-technologies", "#project-image"], {
+            opacity: 0,
+            duration: 0.3,
+            onComplete: updateProjectDisplay, // Update content after fade out
+        });
+    }
+
+    // Function to update the project content
     function updateProjectDisplay() {
         const project = projects[currentProjectIndex];
         document.getElementById("project-title").textContent = project.title;
@@ -105,16 +118,23 @@
         document.getElementById("project-github-link").href = project.githubLink;
         document.getElementById("project-image").src = project.image;
         document.querySelector(".text-8xl").textContent = `0${currentProjectIndex + 1}`; // Update project number
+
+        // Fade in the new project content
+        gsap.to(["#project-title", "#project-description", "#project-technologies", "#project-image"], {
+            opacity: 1,
+            duration: 0.3,
+        });
     }
 
+    // Event listeners for next and previous buttons
     document.getElementById("next-project").addEventListener("click", () => {
         currentProjectIndex = (currentProjectIndex + 1) % projects.length;
-        updateProjectDisplay();
+        animateProjectTransition(); // Trigger animation before updating content
     });
 
     document.getElementById("prev-project").addEventListener("click", () => {
         currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
-        updateProjectDisplay();
+        animateProjectTransition(); // Trigger animation before updating content
     });
 
     // Initialize with the first project
