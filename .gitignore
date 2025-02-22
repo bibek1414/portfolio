@@ -1,2 +1,5 @@
 # Add to .gitignore
 .env
+.comments.txt
+node_modules/
+*.log

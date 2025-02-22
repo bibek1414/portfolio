@@ -1,0 +1,8 @@
+  <!-- Dark Mode Toggle Script -->
+    {% comment %} <a href="{% url 'about' %}"
+        class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">About</a> {% endcomment %}
+    {% comment %} <a href="{% url 'skills' %}"
+    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Skills</a> {% endcomment %}
+{% comment %} <a href="{% url 'blog_list' %}"
+    class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Blog</a> {% endcomment %}
+   

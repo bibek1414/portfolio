@@ -7,56 +7,117 @@
 <div class="max-w-6xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
     <h1 class="text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mb-8">My Projects</h1>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <!-- Hamro Pasal Project -->
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
-            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Hamro Pasal</h2>
-            <a href="https://ecommerce-front-nine-mu.vercel.app/" target="_blank">
-                <img src="{% static 'images/hamro-pasal.png' %}" alt="Hamro Pasal"
-                    class="w-full h-auto mb-4 rounded-lg">
-            </a>
-            <p class="text-gray-600 dark:text-gray-300 mt-2">A simple e-commerce web application built with Next.js, Tailwind CSS, MongoDB,
-                AWS, Google Console, and Stripe.</p>
-            <a href="https://github.com/bibek1414/ecommerce-frontend-backend" target="_blank"
-                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
+    <!-- Project Showcase Container -->
+    <div class="flex flex-col md:flex-row gap-8">
+        <!-- Left Side: Project Details -->
+        <div class="w-full md:w-1/2 bg-white dark:bg-gray-900 shadow-lg rounded-lg p-6">
+            <!-- Project Number -->
+            <h2 class="text-8xl font-bold text-black dark:text-gray-600 mb-4">01</h2>
+            <!-- Project Title -->
+            <h3 id="project-title" class="text-3xl font-semibold text-gray-800 dark:text-white mb-4">Hamro Pasal</h3>
+            <!-- Project Description -->
+            <p id="project-description" class="text-gray-600 dark:text-gray-300 mb-6">
+                A simple e-commerce web application built with Next.js, Tailwind CSS, MongoDB, AWS, Google Console, and Stripe.
+            </p>
+            
+            <!-- Technologies in a Single Line -->
+            <div class="flex flex-wrap gap-2 mb-6">
+                <span id="project-technologies" class="text-blue-500 dark:text-blue-400">
+                    HTML, CSS, Tailwind, JavaScript
+                </span>
+            </div>
+            <!-- Horizontal Line -->
+            <hr class="border-gray-300 dark:border-gray-600 mb-6">
+            <!-- Live Server and GitHub Logos -->
+            <div class="flex gap-4">
+                <a id="project-live-link" href="https://ecommerce-front-nine-mu.vercel.app/" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">
+                    <i class="fas fa-external-link-alt text-3xl"></i>
+                </a>
+                <a id="project-github-link" href="https://github.com/bibek1414/ecommerce-frontend-backend" target="_blank" class="text-blue-500 dark:text-blue-400 hover:underline">
+                    <i class="fab fa-github text-3xl"></i>
+                </a>
+            </div>
         </div>
 
-        <!-- Todo Project -->
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
-            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Todo Project</h2>
-            <a href="https://todo-90zm.onrender.com" target="_blank">
-                <img src="{% static 'images/todoprojectmage.png' %}" alt="Todo Project"
-                     class="w-full h-auto mb-4 rounded-lg">
-            </a>
-            <p class="text-gray-600 dark:text-gray-300 mt-2">A task management application built with Django. It includes functionalities
-                like adding, editing, and deleting tasks.</p>
-            <a href="https://github.com/bibek1414/todo-django" target="_blank"
-                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
-        </div>
+        <!-- Right Side: Project Image and Navigation -->
+        <div class="w-full md:w-1/2">
+            <!-- Project Image -->
+            <img id="project-image" src="{% static 'images/hamro-pasal-1.png' %}" alt="Project Image" class="w-full h-auto object-contain rounded-lg mb-4">
 
-        <!-- Tweeter Bar Project -->
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
-            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Tweeter Bar</h2>
-            <a href="https://tweet-django-xxrw.onrender.com" target="_blank">
-                <img src="{% static 'images/tweeter-bar.png' %}" alt="Tweeter Bar"
-                    class="w-full h-auto mb-4 rounded-lg">
-            </a>
-            <p class="text-gray-600 dark:text-gray-300 mt-2">A social media app where users can register, log in, log out, post tweets, and edit their posts. Built with Django and offers a full set of user management features.</p>
-            <a href="https://github.com/bibek1414/tweet-django" target="_blank"
-                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
-        </div>
-
-        <!-- Quiz Project -->
-        <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg p-6 transform transition duration-500 hover:scale-105">
-            <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">Quiz Application</h2>
-            <a href="https://quiz-django.onrender.com/" target="_blank">
-                <img src="{% static 'images/quiz-app.png' %}" alt="Quiz Application"
-                    class="w-full h-auto mb-4 rounded-lg">
-            </a>
-            <p class="text-gray-600 dark:text-gray-300 mt-2">A quiz application built with Django, Tailwind CSS, and JavaScript. It allows users to take quizzes and view their results.</p>
-            <a href="https://github.com/bibek1414/quiz_django" target="_blank"
-                class="text-blue-500 dark:text-blue-400 mt-3 inline-block">View on GitHub</a>
+            <!-- Navigation Buttons -->
+            <div class="flex justify-center gap-5">
+                <button id="prev-project" class="border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 py-2 px-6 rounded-full text-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition">
+                    &lt;
+                </button>
+                <button id="next-project" class="border-2 border-blue-600 text-blue-600 dark:text-blue-400 dark:border-blue-400 py-2 px-6 rounded-full text-lg hover:bg-blue-600 hover:text-white hover:border-blue-600 transition">
+                    &gt;
+                </button>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- JavaScript for Project Navigation -->
+<script>
+    const projects = [
+        {
+            title: "Hamro Pasal",
+            description: "A simple e-commerce web application built with Next.js, Tailwind CSS, MongoDB, AWS, Google Console, and Stripe.",
+            technologies: "HTML, CSS, Tailwind, JavaScript",
+            liveLink: "https://ecommerce-front-nine-mu.vercel.app/",
+            githubLink: "https://github.com/bibek1414/ecommerce-frontend-backend",
+            image: "{% static 'images/hamro-pasal.png' %}"
+        },
+        {
+            title: "Todo Project",
+            description: "A task management application built with Django. It includes functionalities like adding, editing, and deleting tasks.",
+            technologies: "Django, HTML, CSS, JavaScript",
+            liveLink: "https://todo-90zm.onrender.com",
+            githubLink: "https://github.com/bibek1414/todo-django",
+            image: "{% static 'images/todo.png' %}"
+        },
+        {
+            title: "Tweeter Bar",
+            description: "A social media app where users can register, log in, log out, post tweets, and edit their posts. Built with Django and offers a full set of user management features.",
+            technologies: "Django, Tailwind CSS, JavaScript",
+            liveLink: "https://tweet-django-xxrw.onrender.com",
+            githubLink: "https://github.com/bibek1414/tweet-django",
+            image: "{% static 'images/tweeter-bar.png' %}"
+        },
+        {
+            title: "Quiz Application",
+            description: "A quiz application built with Django, Tailwind CSS, and JavaScript. It allows users to take quizzes and view their results.",
+            technologies: "Django, Tailwind CSS, JavaScript",
+            liveLink: "https://quiz-django.onrender.com/",
+            githubLink: "https://github.com/bibek1414/quiz_django",
+            image: "{% static 'images/quiz-app.png' %}"
+        }
+    ];
+
+    let currentProjectIndex = 0;
+
+    function updateProjectDisplay() {
+        const project = projects[currentProjectIndex];
+        document.getElementById("project-title").textContent = project.title;
+        document.getElementById("project-description").textContent = project.description;
+        document.getElementById("project-technologies").textContent = project.technologies;
+        document.getElementById("project-live-link").href = project.liveLink;
+        document.getElementById("project-github-link").href = project.githubLink;
+        document.getElementById("project-image").src = project.image;
+        document.querySelector(".text-8xl").textContent = `0${currentProjectIndex + 1}`; // Update project number
+    }
+
+    document.getElementById("next-project").addEventListener("click", () => {
+        currentProjectIndex = (currentProjectIndex + 1) % projects.length;
+        updateProjectDisplay();
+    });
+
+    document.getElementById("prev-project").addEventListener("click", () => {
+        currentProjectIndex = (currentProjectIndex - 1 + projects.length) % projects.length;
+        updateProjectDisplay();
+    });
+
+    // Initialize with the first project
+    updateProjectDisplay();
+</script>
 {% endblock %}
