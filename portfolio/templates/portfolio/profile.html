@@ -1,0 +1,164 @@
+{# portfolio/templates/portfolio/profile.html #}
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block title %}Profile - Bibek Bhattarai{% endblock %}
+
+{% block content %}
+<div class="flex min-h-screen bg-white dark:bg-gray-900">
+    <!-- Simple Sidebar Navigation -->
+    <div class="w-64 bg-white dark:bg-gray-900 p-6 space-y-4">
+        <a href="?section=education" 
+           class="block px-4 py-2 rounded-lg transition-all {% if active_section == 'education' %}bg-blue-500 text-white{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700{% endif %}">
+            Education
+        </a>
+        
+        <a href="?section=skills"
+           class="block px-4 py-2 rounded-lg transition-all {% if active_section == 'skills' %}bg-blue-500 text-white{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700{% endif %}">
+            Skills
+        </a>
+        
+        <a href="?section=about"
+           class="block px-4 py-2 rounded-lg transition-all {% if active_section == 'about' %}bg-blue-500 text-white{% else %}text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700{% endif %}">
+            About Me
+        </a>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 p-8">
+        {% if active_section == 'education' %}
+        <div class="space-y-6" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">My Education</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">Bachelor's in Computer Science and Information Technology (BSc CSIT)</h3>
+                <p class="text-gray-600 dark:text-gray-400">Hetauda City College</p>
+                <p class="text-gray-500 dark:text-gray-500">2019-2024</p>
+            </div>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg">
+                <h3 class="text-xl font-semibold text-gray-900 dark:text-white">+2 in Science</h3>
+                <p class="text-gray-600 dark:text-gray-400">Makwanpur Multiple Campus</p>
+                <p class="text-gray-500 dark:text-gray-500">2017-2019</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if active_section == 'skills' %}
+        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">My Skills</h2>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6" data-aos="fade-up">
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-html5 text-orange-500 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    HTML
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-css3-alt text-blue-500 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    CSS
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-css3 text-blue-400 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    Tailwind CSS
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-js text-yellow-500 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    JavaScript
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-react text-blue-400 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    React.js
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-node text-green-600 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    Next.js
+                </span>
+            </div>
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-python text-blue-500 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    Python
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-python text-green-600 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    Django
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-node-js text-green-500 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    Node.js
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fas fa-database text-green-400 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    MongoDB
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-git-alt text-red-500 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    Git
+                </span>
+            </div>
+            
+            <div class="group relative bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg flex items-center justify-center">
+                <i class="fab fa-github text-gray-700 dark:text-gray-300 text-4xl group-hover:opacity-20 transition-opacity"></i>
+                <span class="absolute opacity-0 group-hover:opacity-100 transition-opacity text-gray-900 dark:text-white">
+                    GitHub
+                </span>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if active_section == 'about' %}
+        <div class="space-y-6" data-aos="fade-up">
+            <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">About Me</h2>
+            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 shadow-lg space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400">Name:</p>
+                        <p class="text-gray-900 dark:text-white font-medium">Bibek Bhattarai</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400">Phone:</p>
+                        <p class="text-gray-900 dark:text-white font-medium">+977 9860425440</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400">Email:</p>
+                        <p class="text-gray-900 dark:text-white font-medium">bbhattarai770@gmail.com</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 dark:text-gray-400">Nationality:</p>
+                        <p class="text-gray-900 dark:text-white font-medium">Nepali</p>
+                    </div>
+                    <div class="col-span-2">
+                        <p class="text-gray-600 dark:text-gray-400">Languages:</p>
+                        <p class="text-gray-900 dark:text-white font-medium">English, Nepali</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
