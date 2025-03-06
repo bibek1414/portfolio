@@ -6,6 +6,24 @@
 {% block content %}
 <div class="max-w-6xl mx-auto px-4 py-12 bg-white dark:bg-gray-900 transition-colors duration-300">
 
+    <!-- Image Fullscreen Modal -->
+    <div id="imageModal" class="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center hidden">
+        <div class="relative w-full h-full flex items-center justify-center">
+            <!-- Close button -->
+            <button id="closeModal" class="absolute top-6 right-6 text-white text-3xl bg-blue-600 hover:bg-blue-700 w-10 h-10 rounded-full flex items-center justify-center transition-all z-20">
+                <span>&times;</span>
+            </button>
+            <!-- Back button -->
+            <button id="backButton" class="absolute top-6 left-6 text-white px-5 py-2 rounded-md bg-blue-600 hover:bg-blue-700 transition-all z-20">
+                Back
+            </button>
+            <!-- Fullscreen image with zoom capabilities -->
+            <div class="w-[90%] h-[90%] flex items-center justify-center">
+                <img id="modalImage" src="" alt="Project Image" class="max-w-full max-h-full object-contain transition-transform duration-300">
+            </div>
+        </div>
+    </div>
+
     <!-- Project Showcase Container -->
     <div class="flex flex-col md:flex-row gap-8">
         <!-- Left Side: Project Details -->
@@ -42,8 +60,18 @@
 
         <!-- Right Side: Project Image and Navigation -->
         <div class="w-full md:w-1/2">
-            <!-- Project Image -->
-            <img id="project-image" src="{% static 'images/hamro-pasal-1.png' %}" alt="Project Image" class="w-full h-auto object-contain rounded-lg mb-4">
+            <!-- Project Image Container with Zoom Effect -->
+            <div id="project-image-container" class="relative overflow-hidden rounded-lg mb-4 group cursor-pointer">
+                <!-- Zoom indicator overlay -->
+                <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center opacity-0 group-hover:opacity-100 z-10">
+                    <span class="text-white text-lg bg-blue-600 px-4 py-2 rounded-md">
+                        <i class="fas fa-search-plus mr-2"></i>View Fullscreen
+                    </span>
+                </div>
+                <!-- Actual project image with zoom effect -->
+                <img id="project-image" src="{% static 'images/hamro-pasal.png' %}" alt="Project Image" 
+                     class="w-full h-auto object-contain rounded-lg transition-transform duration-500 group-hover:scale-105">
+            </div>
 
             <!-- Navigation Buttons -->
             <div class="flex justify-center gap-5">
@@ -59,7 +87,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
 
-<!-- JavaScript for Project Navigation -->
+<!-- JavaScript for Project Navigation and Enhanced Image Interactions -->
 <script>
     const projects = [
         {
@@ -93,10 +121,36 @@
             liveLink: "https://quiz-django.onrender.com/",
             githubLink: "https://github.com/bibek1414/quiz_django",
             image: "{% static 'images/image.png' %}"
-        }
+        },
+        {
+            title: "Task Manager",
+            description: "A task management application built with React, FastAPI, MongoDB, and Tailwind CSS. It allows users to organize their tasks efficiently.",
+            technologies: "React, FastAPI, MongoDB, Tailwind CSS",
+            liveLink: "https://taskmanagerfront-sandy.vercel.app/",
+            githubLink: "https://github.com/bibek1414/taskmanagerfront",
+            image: "{% static 'images/task-manager.png' %}" 
+        },
+        {
+            title: "Expense Tracker",
+            description: "A financial dashboard built with Django and PostgreSQL. It allows users to track their income, expenses, and net balance over different time periods.",
+            technologies: "Django, PostgreSQL, Django Allauth",
+            liveLink: "https://expense-tracker-example.herokuapp.com/",
+            githubLink: "https://github.com/bibek1414/expense_tracker",
+            image: "{% static 'images/expense-tracker.png' %}"
+        },
+        {
+            title: "Weather App",
+            description: "A weather forecasting app that provides real-time weather data, built using React and the OpenWeatherMap API.",
+            technologies: "Django, OpenWeatherMap API, Tailwind CSS , JavaScript, Gsap",
+            liveLink: "https://weatherapp-example.vercel.app/", 
+            githubLink: "https://github.com/bibek1414/weatherapp",
+            image: "{% static 'images/weather-app.png' %}"  
+        },
+
     ];
 
     let currentProjectIndex = 0;
+    let isZoomed = false;
 
     // Function to animate the transition between projects
     function animateProjectTransition() {
@@ -137,7 +191,101 @@
         animateProjectTransition(); // Trigger animation before updating content
     });
 
+    // Enhanced Image Modal Functionality
+    const imageModal = document.getElementById("imageModal");
+    const modalImage = document.getElementById("modalImage");
+    const projectImage = document.getElementById("project-image");
+    const projectImageContainer = document.getElementById("project-image-container");
+    const closeModal = document.getElementById("closeModal");
+    const backButton = document.getElementById("backButton");
+
+    // Fix: Open modal when project image container is clicked
+    projectImageContainer.addEventListener("click", () => {
+        modalImage.src = projectImage.src;
+        imageModal.classList.remove("hidden");
+        
+        // Reset zoom state
+        isZoomed = false;
+        modalImage.style.transform = "scale(1)";
+        
+        // Add a nice animation for opening the modal
+        gsap.fromTo(imageModal, 
+            { opacity: 0 }, 
+            { opacity: 1, duration: 0.4, ease: "power2.out" }
+        );
+        
+        // Animate the image appearance
+        gsap.fromTo(modalImage,
+            { scale: 0.8, opacity: 0 },
+            { scale: 1, opacity: 1, duration: 0.5, delay: 0.1, ease: "back.out(1.7)" }
+        );
+    });
+
+    // Close modal functions with enhanced animations
+    function closeImageModal() {
+        // Animate the image
+        gsap.to(modalImage, {
+            scale: 0.8,
+            opacity: 0,
+            duration: 0.3,
+        });
+        
+        // Animate the modal
+        gsap.to(imageModal, {
+            opacity: 0,
+            duration: 0.4,
+            delay: 0.1,
+            onComplete: () => {
+                imageModal.classList.add("hidden");
+                // Reset zoom when closing
+                modalImage.style.transform = "scale(1)";
+                isZoomed = false;
+            }
+        });
+    }
+
+    // Toggle zoom functionality for the modal image
+    modalImage.addEventListener("click", (e) => {
+        e.stopPropagation(); // Prevent closing the modal when clicking on the image
+        
+        if (!isZoomed) {
+            // Zoom in to 150%
+            gsap.to(modalImage, {
+                scale: 1.5,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            isZoomed = true;
+        } else {
+            // Zoom out back to normal
+            gsap.to(modalImage, {
+                scale: 1,
+                duration: 0.3,
+                ease: "power2.out"
+            });
+            isZoomed = false;
+        }
+    });
+
+    // Close modal when clicking the close button or back button
+    closeModal.addEventListener("click", closeImageModal);
+    backButton.addEventListener("click", closeImageModal);
+
+    // Close modal when clicking outside the image
+    imageModal.addEventListener("click", (e) => {
+        if (e.target === imageModal || e.target.parentNode === imageModal) {
+            closeImageModal();
+        }
+    });
+
+    // Close modal with Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !imageModal.classList.contains("hidden")) {
+            closeImageModal();
+        }
+    });
+
     // Initialize with the first project
     updateProjectDisplay();
 </script>
-{% endblock %}
+{% endblock %}  

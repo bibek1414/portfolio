@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Bibek Bhattarai - Portfolio{% endblock %}</title>
+    <title>{% block title %} Bibek Bhattarai - Portfolio{% endblock %}</title>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
     {% tailwind_css %}
     <!-- Prevent Flash -->
     <script>
@@ -21,24 +22,31 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-white font-sans">
-    <!-- Navigation Bar -->
-    <nav class="bg-gray-100 dark:bg-gray-800 shadow-lg fixed w-full z-10">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="flex justify-between items-center py-4">
+   <!-- Navigation Bar -->
+<nav class="bg-gray-100 dark:bg-gray-800 shadow-lg fixed w-full z-10">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="flex justify-between items-center py-4">
+            <!-- Logo and Name -->
+            <div class="flex items-center space-x-3">
+                <!-- Circular Logo -->
+                <img src="{% static 'images/logo3.png' %}" alt="Logo" class="w-10 h-10 rounded-full object-cover">
+                <!-- Name -->
                 <a href="{% url 'home' %}" class="text-2xl font-bold text-blue-600 dark:text-blue-400">Bibek .</a>
-                <div class="flex space-x-6 items-center">
-                    <a href="{% url 'home' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
-                    <a href="{% url 'profile' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Resume</a>
-                    <a href="{% url 'projects' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
-                    <a href="{% url 'contact' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
-                    <!-- Dark Mode Toggle -->
-                    <button id="theme-toggle" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
-                        <i id="theme-icon" class="fas fa-moon text-2xl"></i>
-                    </button>
-                </div>
+            </div>
+            <!-- Navigation Links -->
+            <div class="flex space-x-6 items-center">
+                <a href="{% url 'home' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Home</a>
+                <a href="{% url 'profile' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Resume</a>
+                <a href="{% url 'projects' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Projects</a>
+                <a href="{% url 'contact' %}" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">Contact</a>
+                <!-- Dark Mode Toggle -->
+                <button id="theme-toggle" class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition">
+                    <i id="theme-icon" class="fas fa-moon text-2xl"></i>
+                </button>
             </div>
         </div>
-    </nav>
+    </div>
+</nav>
     
     <!-- Main Content -->
     <main class="pt-20 max-w-6xl mx-auto px-4">
